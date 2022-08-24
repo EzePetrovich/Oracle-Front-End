@@ -1,0 +1,32 @@
+<canvas width = "602" height = "602"></canvas>
+
+<script>
+    
+    function fillRectModif(x, y, sizX, sizY, sizPorc) {
+        context.lineWidth = 2; 
+        context.strokeRect(Math.round(x * sizPorc), Math.round(y * sizPorc), Math.round(sizX * sizPorc), Math.round(sizY * sizPorc));
+        context.fillRect(Math.round(x * sizPorc), Math.round(y * sizPorc), Math.round(sizX * sizPorc), Math.round(sizY * sizPorc));
+    }
+    function center(long) {return Math.round(long / 2);}
+    
+    var background = document.querySelector("canvas");
+    var context = background.getContext("2d");
+    var sizPorc = 0.75;
+    
+
+    // Head
+    context.fillStyle = "#3CAE09";
+    fillRectModif(2, 2, 500, 500, sizPorc);
+    
+    // Eyes
+    context.fillStyle = "black";
+    fillRectModif(87, 102, 110, 110, sizPorc);
+    fillRectModif(307, 102, 110, 110, sizPorc);
+
+    // Mouth
+    fillRectModif(197, 212, 110, 165, sizPorc, 0);
+    fillRectModif(142, 267, 55, 165, sizPorc, 0);
+    fillRectModif(307, 267, 55, 165, sizPorc, 0);
+    
+
+</script>

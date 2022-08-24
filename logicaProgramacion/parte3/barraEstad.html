@@ -1,0 +1,68 @@
+<h1>Gráfica de barras de navegadores<br></h1>
+<h2>En la siguiente gráfica estadística se representan los porcentajes de usuarios para cada navegador en el año indicado:</h2>
+<h1>| 2009 | --------- | 2019 |</h1>
+<canvas width = "600" height = "600"></canvas>
+<script>
+
+    class Fact {
+        constructor(name, porc, colour) {
+            this.name = name;
+            this.porc = porc / 100;
+            this.colour = colour;
+        }
+    }
+
+    function drawRectangle(x, y, base, altura, color) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+        pincel.fillStyle = color;
+        pincel.fillRect(x, y, base, altura);
+        pincel.strokeStyle = "black";
+        pincel.strokeRect(x, y, base, altura);
+    }
+
+    function writeText(x, y, text, colour) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+        pincel.font = "35px Georgia";
+        pincel.fillStyle = colour;
+        pincel.fillText(text, x, y);    
+    }
+
+    function drawBar(x, y, data) { // x = 100 (fijo) | y = 300 (limite de altura)
+        let longBar = 300;
+        var resPosY = 0;
+        data.forEach(f => {
+            pincel.fillStyle = f.colour;
+            pincel.fillRect(x, y + resPosY, 100, longBar * f.porc);
+            pincel.strokeRect(x, y + resPosY, 100, longBar * f.porc);
+            resPosY += longBar * f.porc;
+        });
+    }  
+
+    var porcs2009 = [6, 47, 41, 3, 3];
+    var porcs2019 = [81, 9, 3, 3, 4];
+    var colours = ["#F6140D", "#FF9300", "#0294FA", "#F1CB0B", "#0B930B"];
+    var navs = ["Google Chrome", "Mozilla Firefox", "Internet Explorer", "Safari", "Others"];
+    var data1 = [], data2 = [];
+    var cont = 0;
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    for(var i = 0; i < navs.length; i++) {
+        let f1 = new Fact(navs[i], porcs2009[i], colours[i]);
+        let f2 = new Fact(navs[i], porcs2019[i], colours[i]);
+        data1.push(f1);
+        data2.push(f2);
+    }
+
+    drawBar(2, 2, data1);
+    drawBar(200, 2, data2);
+
+    data1.forEach(f => {
+        writeText(2, 350 + cont, f.name, f.colour);
+        cont += 50;
+    });
+
+</script>

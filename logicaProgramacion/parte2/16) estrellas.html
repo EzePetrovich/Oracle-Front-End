@@ -1,0 +1,23 @@
+<meta charset = "UTF-8">
+
+<h2>Matriz de estrellas.</h2>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function print(phrase) {document.write(phrase + "");}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(1);
+    }
+
+    alert("Matriz de estrellas");
+    var fil = parseInt(prompt("Ingrese filas: ")), col = parseInt(prompt("Ingrese columnas: "));
+
+    for(var i = 0; i < fil; i++) {
+        for(var j = 0; j < col; j++) {
+            print(" * ");
+        }
+        println("");
+    }
+</script>

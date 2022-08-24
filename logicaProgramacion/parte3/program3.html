@@ -1,0 +1,53 @@
+<canvas width = "600" height = "400"></canvas>
+
+<script>
+
+    function doClick(event) {
+        var x = event.pageX - background.offsetLeft;
+        var y = event.pageY - background.offsetTop;
+        console.log(event);
+        alert("Hizo click en coordenadas: x = " + x + ", y = " + y);
+    }
+
+    function drawCirc(event) {
+        var x = event.pageX - background.offsetLeft;
+        var y = event.pageY - background.offsetTop;
+        ctxt.fillStyle = color;
+        ctxt.beginPath();
+        ctxt.arc(x, y, 10, 0, 2 * Math.PI);
+        ctxt.fill();
+        console.log(event);
+    }
+
+    function changeColor() {
+        var pos = 0;
+        if(indexColor(color) < colours.length - 1) {
+            pos = indexColor(color) + 1;
+        }
+        color = colours[pos];
+        return false;
+    }
+
+    function indexColor(color) {
+        var ind = 0, find = false;
+        for(var i = 0; i < colours.length; i++) {
+            if(colours[i] == color) {
+                ind = i;
+                break;
+            }
+        }
+        return ind;
+    }
+
+    var background = document.querySelector("canvas");
+    var ctxt = background.getContext("2d");
+    var colours = ["blue", "red", "green"];
+    var color = "blue";
+
+    ctxt.strokeRect(0, 0, background.width, background.height);
+    background.oncontextmenu = changeColor;
+    background.onclick = drawCirc;
+    
+    // background.onclick = drawCirc;
+    // background.ondblclick = drawCirc;
+</script>

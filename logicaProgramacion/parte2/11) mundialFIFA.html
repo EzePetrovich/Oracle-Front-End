@@ -1,0 +1,22 @@
+<meta charset = "UTF-8">
+
+<h2>Mundial de FIFA</h2>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+
+    var anhoMund = 1930;
+    var anhoAct = parseInt(prompt("¿Hasta que año quiere calcular los mundiales?"));
+
+    while(anhoMund <= anhoAct) {
+        alert("Hubo mundial de FIFA en: " + anhoMund);
+        println("Hubo mundial de FIFA en: " + anhoMund);
+        anhoMund += 4;
+    }
+    
+</script>

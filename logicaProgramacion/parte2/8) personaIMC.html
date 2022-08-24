@@ -1,0 +1,39 @@
+<meta charset = "UTF-8">
+
+<h3>Cálculo de índice de masa corporal.</h3>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    function round(n, decim) {return Number(Math.round(n + 'e' + decim) + 'e-' + decim);}
+    function personaIMC(altura, peso) {return round(peso / Math.pow(altura, 2), 2);}
+    function mostrarIMC(imc, nombre) {println("El índice de masa corporal de " + nombre + " es: " + imc);}
+
+    var nombre = prompt("» Ingrese su nombre: ");
+    var peso = prompt("» Ingrese su peso: ");
+    var altura = prompt("» Ingrese su altura: ");
+
+    var imcPersona = personaIMC(altura, peso);
+
+    mostrarIMC(imcPersona, nombre);
+
+    switch(true) {
+        case (imcPersona < 18.5):
+            println("Su IMC se encuentra por debajo del normal.");
+            break;
+        case (imcPersona >= 18.5 && imcPersona < 25):
+            println("Su IMC corresponde al de una persona saludable.");
+            break;
+        case (imcPersona >= 25 && imcPersona < 30):
+            println("Su IMC corresponde al de una persona con sobrepeso.");
+            break;
+        case (imcPersona >= 30):
+            println("Su IMC corresponde al de una persona con obesidad.");
+            break;
+    }
+
+</script>

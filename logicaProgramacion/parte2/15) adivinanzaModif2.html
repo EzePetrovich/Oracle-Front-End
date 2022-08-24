@@ -1,0 +1,27 @@
+<meta charset = "UTF-8">
+
+<h2>Adivinanza.</h2>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+
+    var numRandom = Math.round(Math.random() * 10 + 1);
+    var numIng, trys = parseInt(prompt("ingrese número de intentos")), trysTot = trys;
+    while(true) {
+        numIng = parseInt(prompt("Ingrese un número entre 0 y 10"));
+        if(numRandom == numIng || trys == 0) {break;}
+        else if(numIng > numRandom) {alert("No acertaste, el número ingresado es más grande.");}
+        else {alert("No acertaste, el número ingresado es más pequeño.");}
+        alert("Le queda " + (trys - 1) + " intentos.");
+        trys--;
+    }
+    if(numRandom == numIng) {println("¡Felicidades acertaste!");}
+    else {println("Ya no le quedan más intentos.")}
+    println("Número ingresado: " + numIng + "<br>Número pensado: " + numRandom + "<br>Intentos empleados: " + (trysTot - trys));
+    
+</script>

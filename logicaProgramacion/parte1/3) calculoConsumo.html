@@ -1,0 +1,19 @@
+<meta charset = "UTF-8">
+
+<h3>¿Alcohol o gasolina?<br></h3>
+<h4>Eficencia de un auto según combustible.</h4>
+
+<script>
+
+    function round(value, places) {return Number(Math.round(value + 'e' + places) + 'e-' + places);}
+    var decimPlaces = 2;
+    var tanque = 40, consAlc = round(300 / tanque, decimPlaces), consGas = round(480 / tanque, decimPlaces);
+    document.write("Para un auto con un tanque de " + tanque + "lts:");
+    document.write("<br><h4>Gasolina.</h4>");
+    document.write("El vehículo recorre " + consGas + "km por lt de combustible.");
+    document.write("<br>Con el tanque lleno recorre " + (consGas * tanque) + "km.");
+    document.write("<br><h4>Alcohol</h4>");
+    document.write("El vehículo recorre " + consAlc + "km por lt de combustible.");
+    document.write("<br>Con el tanque lleno recorre " + round(consAlc * tanque, decimPlaces) + "km.");
+
+</script>

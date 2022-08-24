@@ -1,0 +1,19 @@
+<meta charset = "UTF-8">
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    println("<h2>Media de edades en familia.</h2>")
+    var nFam = parseInt(prompt("¿Cuántos integrantes tiene su familia?"));
+    var sumFam = 0;
+    for(var i = 1; i <= nFam; i++) {
+        sumFam += parseInt(prompt("Edad del integrante " + i));
+    }
+    var medFam = Math.round(sumFam / nFam);
+    println("La media de edades en la familia es: " + medFam);
+
+</script>

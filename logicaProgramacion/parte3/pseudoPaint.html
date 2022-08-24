@@ -1,0 +1,75 @@
+<canvas width = "1900" height = "930"></canvas>
+
+<script>
+
+    var background = document.querySelector('canvas');
+    var ctxt = background.getContext('2d');
+    var activePencil = false;
+    var colours = ["red", "blue", "green", "yellow", "white", "gray", "black"];
+    var rectPalette = 30;
+    var paletteX = rectPalette * colours.length;
+    var pencilColour = "blue";
+    var sizePencil = 5;
+
+    ctxt.strokeRect(0, 0, 1900, 930);
+
+    
+
+    function drawPaletteColours(colours) {
+        var x = 1;
+        for(var i = 0; i < colours.length; i++) {
+            drawRect(x, colours[i]);
+            x += rectPalette;
+        }
+    }
+
+    function changeColour() {
+        var x = event.pageX - background.offsetLeft;
+        var y = event.pageY - background.offsetTop;
+        if(!(x > (paletteX + sizePencil)) || (y > (rectPalette + sizePencil))) {colourSelect(x);}
+    }
+
+    function colourSelect(x) {
+        var cont = 0;
+        for(var i = 31; i <= colours.length * rectPalette + 1; i += rectPalette) {
+            if(x < i) {
+                pencilColour = colours[cont];
+                break;
+            }
+            cont++;
+        }
+    }
+
+    function drawRect(x, colour) {
+        ctxt.fillStyle = colour;
+        ctxt.strokeRect(x, 1, rectPalette, rectPalette);
+        ctxt.fillRect(x, 1, rectPalette, rectPalette);
+    }
+
+    function drawCirc(event) {
+        if(activePencil) {
+            var x = event.pageX - background.offsetLeft;
+            var y = event.pageY - background.offsetTop;
+            if((x > (paletteX + sizePencil)) || (y > (rectPalette + sizePencil))) {
+                ctxt.fillStyle = pencilColour;
+                ctxt.beginPath();
+                ctxt.arc(x, y, sizePencil, 0, 2 * Math.PI);
+                ctxt.fill();
+            }
+        }
+    }
+
+    drawPaletteColours(colours);
+
+    background.onmousemove = drawCirc;
+
+    background.onclick = changeColour;
+
+    function onDraw() {activePencil = true;}
+
+    function offDraw() {activePencil = false;}
+
+    background.onmousedown = onDraw;
+    background.onmouseup = offDraw;
+
+</script>

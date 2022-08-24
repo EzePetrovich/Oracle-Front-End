@@ -1,0 +1,23 @@
+<meta charset = "UTF-8">
+
+<h2>Adivinanza.</h2>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    function azar(n) {return Math.round(Math.random() * n);}
+
+    var n = parseInt(prompt("Pensar un número entre 0 y ..."));
+    var numRandom = azar(n);
+    var numIng = parseInt(prompt("Ingrese un número entre 0 y " + n));
+
+    if(numRandom == numIng) {println("¡Felicidades acertaste!");}
+    else if(numIng > numRandom) {println("No acertaste, el número ingresado es más grande.");}
+    else {println("No acertaste, el número ingresado es más pequeño.");}
+    println("Número ingresado: " + numIng + "<br>Número pensado: " + numRandom);
+    
+</script>

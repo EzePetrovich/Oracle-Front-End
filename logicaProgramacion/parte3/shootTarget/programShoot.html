@@ -1,0 +1,104 @@
+<canvas width = "600" height = "400"></canvas>
+<button class = "Target" onclick = "setMovTarget()">Comenzar/Detener</button>
+<audio id = "shoot">
+    <source src = "glock18.wav" type = "audio/wav">
+</audio>
+<audio id = "ric">
+    <source src = "ric_metal-1.wav" type = "audio/wav">
+</audio>
+<audio id = "headshoot">
+    <source src = "headshot.mp3" type = "audio/mp3">
+</audio>
+
+<style>
+    .Target {
+        display: inline-block;
+        padding: 20px 40px;
+        background-color: red;
+        border-radius: 8px;
+        box-shadow: 0 9px #999;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        font-size: 20px;
+        transition-duration: 0.2s;
+    }
+    .Target:hover {
+        background-color: crimson;
+        color: white;
+    }
+    .Target:active {
+        background-color: crimson;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        color: white;
+    }
+</style>
+
+<script>
+
+    var background = document.querySelector("canvas");
+    var ctxt = background.getContext("2d");
+    var xRandom, yRandom;
+    var mov = false;
+    var glock = document.getElementById("shoot");
+    glock.volume = 0.1;
+    var hit = document.getElementById("ric");
+    hit.volume = 0.3;
+    var headsh = document.getElementById("headshoot");
+    headsh.volume = 0.3;
+    
+    function setMovTarget() {
+        if(mov) {clearInterval(movTarget); mov = false;}
+        else {movTarget = setInterval(moveTarget, 600); mov = true;}
+    }
+
+    function drawCirc(x, y, rad, colour) {
+        ctxt.fillStyle = colour;
+        ctxt.beginPath();
+        ctxt.arc(x, y, rad, 0, 2 * Math.PI);
+        ctxt.stroke();
+        ctxt.fill();
+    }
+
+    function drawTarget(x, y, rad) {
+        drawCirc(x, y, rad * 3, "red");
+        drawCirc(x, y, rad * 2, "white");
+        drawCirc(x, y, rad, "red");
+    }
+
+    function clearScreen() {
+        ctxt.clearRect(0, 0, 600, 400);
+        ctxt.strokeRect(0, 0, 600, 400);
+    }
+
+    function moveTarget() {
+        clearScreen();
+        xRandom = Math.random() * 552 + 24;
+        yRandom = Math.random() * 352 + 24;
+        drawTarget(xRandom, yRandom, 8);
+    }
+    
+    function shoot(event) {
+        glock.load();
+        glock.play();
+        var x = event.pageX - background.offsetLeft;
+        var y = event.pageY - background.offsetTop;
+        if((x > xRandom - 8 && x < xRandom + 8) && (y > yRandom - 8 && y < yRandom + 8)) {
+            headsh.load();
+            headsh.play();
+            hit.load();
+            hit.play();
+        }
+    }
+
+    function drawFire(x, y) {
+
+    }
+
+    ctxt.strokeRect(0, 0, 600, 400);
+    background.onclick = shoot;
+    // drawCirc(20, 20, 20)
+    var movTarget = null;
+
+</script>

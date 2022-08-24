@@ -1,0 +1,90 @@
+<canvas width = "600" height = "400"></canvas>
+<button class = "Movement" onclick = "setMovC()">Mover/Detener</button>
+
+<style>
+    .Movement {
+        display: inline-block;
+        padding: 20px 40px;
+        background-color: red;
+        border-radius: 8px;
+        box-shadow: 0 9px #999;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        font-size: 20px;
+        transition-duration: 0.2s;
+    }
+    .Movement:hover {
+        background-color: crimson;
+        color: white;
+    }
+    .Movement:active {
+        background-color: crimson;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        color: white;
+    }
+</style>
+
+<script>
+
+    var background = document.querySelector("canvas");
+    var ctxt = background.getContext("2d");
+    var pos = 0, posIn = pos, colour = "red", colours = ["blue", "green", "yellow", "red"];
+    var movC = null, mov = false;
+
+    function setMovC() {
+        if(mov) {clearInterval(movC); mov = false;}
+        else {movC = setInterval(moveCirc, 1); mov = true;}
+    }
+
+    function drawCirc(x, y, rad) {
+        ctxt.fillStyle = colour;
+        ctxt.beginPath();
+        ctxt.arc(x, y, rad, 0, 2 * Math.PI);
+        ctxt.fill();
+    }
+
+    function clearScreen() {
+        ctxt.clearRect(0, 0, 600, 400);
+        ctxt.strokeRect(0, 0, 600, 400);
+    }
+
+    function moveCirc() {
+        clearScreen();
+        drawCirc(20 + pos, 20, 20);
+        if(posIn <= 0) {
+            if(pos >= 560) {posIn = pos}
+            else {pos++;}
+        }
+        else {
+            if(pos <= 0) {posIn = pos}
+            else {pos--;}
+        } 
+    }
+
+    function indexColour(col) {
+        var ind = 0;
+        for(var i = 0; i < colours.length; i++) {
+            if(colours[i] == col) {
+                ind = i;
+                break;
+            }
+        }
+        return ind;
+    }
+
+    function changeColour() {
+        var ind = 0;
+        if(indexColour(colour) < colours.length - 1) {ind = indexColour(colour) + 1;}
+        colour = colours[ind];
+        clearScreen();
+        drawCirc(20 + pos, 20, 20);
+        return false;
+    }
+    
+    ctxt.strokeRect(0, 0, 600, 400);
+    drawCirc(20, 20, 20);
+    // var movC = setInterval(moveCirc, 1);
+    background.oncontextmenu = changeColour;
+</script>

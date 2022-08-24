@@ -1,0 +1,32 @@
+<meta charset = "UTF-8">
+
+<h2>Equipo de fútbol</h2>
+<h3>Cálculo de puntos.</h3>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    function round(n, decim) {return Number(Math.round(n + 'e' + decim) + 'e-' + decim);}
+    function perfomTeam() {}
+    alert("Puntos para el año actual.");
+    var winsAct = parseInt(prompt("Cantidad de victorias"));
+    var drawsAct = parseInt(prompt("Cantidad de empates"));
+    var totScoreAnhoAct = winsAct * 3 + drawsAct;
+    alert("Puntos para el año pasado.");
+    var winsPas = parseInt(prompt("Cantidad de victorias"));
+    var drawsPas = parseInt(prompt("Cantidad de empates"));
+    var totScoreAnhoPas = winsPas * 3 + drawsPas;
+    
+    println("Año actual: " + totScoreAnhoAct + "<br>Año pasado: " + totScoreAnhoPas);
+
+    if(totScoreAnhoAct > totScoreAnhoPas) {println("El equipo está mejor que el año pasado.")}
+    else if(totScoreAnhoAct == totScoreAnhoPas) {println("El equipo está igual que el año pasado.")}
+    else if(totScoreAnhoAct < totScoreAnhoPas) {println("El equipo está peor que el año pasado.")}
+
+    // NaN: not a number
+
+</script>

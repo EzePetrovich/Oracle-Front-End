@@ -1,0 +1,23 @@
+<meta charset = "UTF-8">
+
+<script>
+    /**
+     * SALTOS DE LINEA.
+     * function saltoLinea(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+     * var saltoLinea = "<br>";
+     */
+
+    // Funciones que imprimen una cadena (sin salto y con salto de línea)
+    
+    function print(cadena) {document.write(cadena);}
+    function println(cadena) {document.write(cadena + "<br>");}
+
+    var anho = 2022, edadEze = anho - 1999;
+    println("La edad de Ezequiel es " + edadEze + ".<br>");
+    print("Ezequiel nació en el año: " + (anho - edadEze) + "."); // JavaScript lo reconoce como un valor numérico, debido a que no está encerrado entre comillas.
+
+    // Si intentamos concatenar un String y un valor numérico, JavaScript convertirá el valor numérico a String y luego concatenará ambos valores.
+
+</script>
+
+<!-- El código HTML es estático. Sin embargo, el código JavaScript es dinámico, porque puedo utilizar variables y estructuras de acciones. -->

@@ -1,0 +1,15 @@
+<meta charset = "UTF-8">
+
+<h3>Diferencia de edades</h3>
+
+<script>
+
+    function println(phrase) {document.write(phrase + "<br>")} // Imprime con salto de línea.
+    function jumpLines(lines) {for(var i = 0; i < lines; i++) {println()}} // Realiza saltos de líneas según la cantidad que reciba como argumento.
+    function difEdad(p1, p2) {return Math.abs(p2 - p1);} // Calcula la diferencia de edad entre dos personas y le aplica valor absoluto.
+
+    var anho = 2022;
+    var mateoEdad = anho - 2011, ezeEdad = anho - 1999; 
+    println("La diferencia de edad entre Mateo y yo es: " + difEdad(mateoEdad, ezeEdad) + " años.");
+
+</script>

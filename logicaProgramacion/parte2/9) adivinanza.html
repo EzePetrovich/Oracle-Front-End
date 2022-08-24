@@ -1,0 +1,19 @@
+<meta charset = "UTF-8">
+
+<h2>Adivinanza.</h2>
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+
+    var numRandom = Math.round(Math.random() * 10);
+    var numIng = parseInt(prompt("Ingrese un número"));
+
+    if(numRandom == numIng) {println("¡Felicidades acertaste!");}
+    else {println("No acertaste, el número era: " + numRandom);}
+    
+</script>

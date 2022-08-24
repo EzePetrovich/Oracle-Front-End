@@ -1,0 +1,21 @@
+<meta charset = "UTF-8">
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    var numMult = parseInt(prompt("¿la tabla de que número quiere calcular?")); 
+    document.write("<h2>TABLA DEL " + numMult + "</h2>");
+    var cont = 1;
+    println("<hr><b>Bucle WHILE.</b>");
+    while(cont <= 10) {
+        println(numMult + " X " + cont + " = " + (numMult * cont));
+        cont++;
+    }
+    println("<hr><b>Bucle FOR.</b>");
+    for(var i = 1; i <= 10; i++) {println(numMult + " X " + i + " = " + (numMult * i));}
+    
+</script>

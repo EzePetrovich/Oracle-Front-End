@@ -1,0 +1,30 @@
+<canvas width = "400" height = "400"></canvas>
+
+<script>
+
+    var background = document.querySelector("canvas");
+    var context = background.getContext("2d");
+    // Dibuja un cuadrado en la posición pasada como parámetro
+    function drawSquare(x, y, colour) {
+        context.beginPath();
+        context.lineWidth = 2;
+        context.strokeRect(x, y, 50, 50);
+        context.fillStyle = colour;
+        context.fillRect(x, y, 50, 50);
+    }
+    // Retorna la cantidad máxima de figuras que se pueden colocar dentro del lienzo en X
+    function limX(widFig) {return Math.floor(background.width / widFig) * 50;}
+    // Retorna la cantidad máxima de figuras que se pueden colocar dentro del lienzo en Y
+    function limY(heigFig) {return Math.floor(background.height / heigFig) * 50;}
+    // Dibuja todos las figuras posibles dentro del lienzo
+    function drawSquares(widFig, heigFig, colour) {
+        for(var j = 0; j < limY(heigFig); j += 50) {
+            for(var i = 0; i < limX(widFig); i += 50) {
+                drawSquare(i, j, colour);
+            }
+        }
+    }
+
+    drawSquares(50, 50, "crimson");
+
+</script>

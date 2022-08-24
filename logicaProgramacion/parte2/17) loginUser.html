@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script>
+
+    var inicioDeSesionRegistrado = "alura";
+    var contrasenhaRegistrada = "alura321";
+    var trys = 3, inicioDeSesionIngresado, contrasenhaIngresada;
+    while(true) {
+        inicioDeSesionIngresado = prompt("Ingrese su usuario");
+        contrasenhaIngresada = prompt("Ingrese su contraseña");
+        if((inicioDeSesionRegistrado == inicioDeSesionIngresado && contrasenhaRegistrada == contrasenhaIngresada) && trys > 1) {
+            alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+            break;
+        } else {
+            if(trys > 1) {
+                alert("inicio de sesión inválido. Le quedan " + (trys - 1) + " intentos, por favor intentelo de nuevo.");
+                trys--;
+            } else {alert("Inicio de sesión inválido. Ya no le quedan intentos."); break;}
+        }
+    }
+    if((inicioDeSesionRegistrado == inicioDeSesionIngresado && contrasenhaRegistrada == contrasenhaIngresada)) {document.write("<h2>¡Bienvenido al sistema!</h2>");}
+    else {document.write("<h2>Acceso denegado.</h2>")}
+
+</script>

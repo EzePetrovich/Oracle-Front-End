@@ -1,0 +1,26 @@
+<canvas width = "750" height = "525"></canvas>
+
+<script>
+
+    // document.querySelector("") | Conecta las etiquetas de HTML con acciones que quiero hacer en JavaScript
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    pincel.fillStyle = "#99D6D9";
+    pincel.fillRect(0, 0, 750, 525);
+    pincel.lineWidth = 1;
+    pincel.strokeRect(0, 0, 750, 525);
+    
+    pincel.fillStyle = "white";
+    pincel.fillRect(0, 175, 750, 175);
+    pincel.lineWidth = 1;
+    pincel.strokeRect(0, 175, 750, 175);
+
+    pincel.beginPath();
+    pincel.arc(370, 261, 50, 0, 2 * Math.PI);
+    pincel.lineWidth = 2;
+    pincel.stroke();
+    pincel.fillStyle = "#FFDA00"
+    pincel.fill();
+
+</script>

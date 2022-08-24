@@ -1,0 +1,16 @@
+<meta charset = "UTF-8">
+
+<script>
+
+    function jumpLines(n) {for(var i = 0; i < n; i++) {document.write("<br>");}}
+    function println(phrase) {
+        document.write(phrase);
+        jumpLines(3);
+    }
+    println("<h2>Números pares del 1 al 100.</h2>")
+   for(var i = 2; i <= 100; i += 2) {
+        println(i);
+   }
+   println("<b>FIN</b>");
+
+</script>
